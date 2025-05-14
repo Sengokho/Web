@@ -1,1 +1,42 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Modern Site</title> <link rel="stylesheet" href="styles.css" /> </head> <body> <header> <h1>My Modern Website</h1> <nav> <ul> <li><a href="#">Home</a></li> <li><a href="#">About</a></li> </ul> </nav> </header> <main> <section class="hero"> <h2>Welcome!</h2> <p>This is a sleek, modern website built with HTML, CSS, and JavaScript.</p> </section> </main> <footer> <p>© 2025 Your Name</p> </footer> <script src="script.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Nav Site</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#" onclick="loadPage('home.html')">Home</a></li>
+      <li><a href="#" onclick="loadPage('about.html')">About</a></li>
+      <li><a href="#" onclick="loadPage('gallery.html')">Gallery</a></li>
+      <li><a href="#" onclick="loadPage('contact.html')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <!-- Content will be loaded here -->
+  </div>
+
+  <script>
+    function loadPage(page) {
+      fetch(page)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('content').innerHTML = data;
+        })
+        .catch(err => {
+          document.getElementById('content').innerHTML = "<p>Error loading content.</p>";
+          console.error(err);
+        });
+    }
+
+    // Load home page by default
+    window.onload = () => loadPage('home.html');
+  </script>
+
+</body>
+</html>
